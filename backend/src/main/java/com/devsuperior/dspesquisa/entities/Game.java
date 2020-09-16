@@ -14,9 +14,11 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.devsuperior.dspesquisa.entities.enums.Platform;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "tb_game")
-public class Game implements Serializable{	
+public class Game implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -28,7 +30,7 @@ public class Game implements Serializable{
 	@ManyToOne
 	@JoinColumn(name = "genre_id")
 	private Genre genre;
-	
+
 	@OneToMany(mappedBy = "game")
 	private List<Record> records = new ArrayList<>();
 
@@ -74,8 +76,6 @@ public class Game implements Serializable{
 	public void setGenre(Genre genre) {
 		this.genre = genre;
 	}
-	
-	
 
 	public List<Record> getRecords() {
 		return records;
